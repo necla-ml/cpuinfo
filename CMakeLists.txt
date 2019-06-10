@@ -84,6 +84,11 @@ ELSEIF(NOT CMAKE_SYSTEM_NAME MATCHES "^(Windows|Darwin|Linux|Android)$")
     "Target operating system \"${CMAKE_SYSTEM_NAME}\" is not supported in cpuinfo. "
     "cpuinfo will compile, but cpuinfo_initialize() will always fail.")
   SET(CPUINFO_SUPPORTED_PLATFORM FALSE)
+ELSEIF(CMAKE_SYSTEM_PROCESSOR MATCHES "aurora")
+  MESSAGE(WARNING
+    "Target processor \"${CMAKE_SYSTEM_PROCESSOR}\" is not supported in cpuinfo. "
+    "cpuinfo will compile, but cpuinfo_initialize() will always fail.")
+  SET(CPUINFO_SUPPORTED_PLATFORM FALSE)
 ENDIF()
 
 # ---[ Download deps
